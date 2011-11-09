@@ -1,0 +1,49 @@
+!!! 5
+html
+  head
+    meta(http-equiv="Content-Type",content="text/html;charset=utf-8")
+    title Knockback
+    link(rel="stylesheet",href="look.css")
+  body
+    #wrap
+      header
+        .lock
+          .logo
+            .part.left.animated.fadeInRight: img(src="lib/left.svg")
+            .part.right.animated.fadeInLeft: img(src="lib/right.svg")
+          h1
+            span.knock.animated.fadeInRight Knock
+            span.back.animated.fadeInLeft back
+
+        h2
+          span.knock.animated.fadeIn= "brings Knockout.js "
+          span.magic.animated.fadeIn= "magic "
+          span.back.animated.fadeIn to Backbone
+      nav
+        .separator
+          span.label Code
+          .selection.codestyle
+            .option
+              input#cs-cs(type="radio",name="codestyle",checked)
+              label(for="cs-cs") CoffeeScript
+            .option
+              input#cs-js(type="radio",name="codestyle")
+              label(for="cs-js") Javascript
+        .separator
+          span.label Langauge
+          .selection.codestyle
+            .option
+              input#lang-en(type="radio",name="lang",checked)
+              label(for="lang-en") EN
+            .option
+              input#lang-fr(type="radio",name="lang")
+              label(for="lang-fr") FR
+            .option
+              input#lang-it(type="radio",name="lang")
+              label(for="lang-it") IT
+
+        //
+          ul.separator
+            li: a(href="#") Repository
+            li: a(href="#") Tutorial
+            li: a(href="#") Documentation

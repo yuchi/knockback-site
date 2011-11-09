@@ -1,0 +1,105 @@
+
+@import url(http://fonts.googleapis.com/css?family=Numans);
+@import 'lib/animate-custom.css';
+@import 'nib';
+
+Chosen = "Numans"
+
+body
+	background #eee
+	margin 0px
+	padding 0px
+	font-family Helvetica, Arial, sans-serif
+
+.animated
+	animation-fill-mode both
+
+#wrap
+	position relative
+	max-width 960px
+	margin 0 auto
+
+header
+	font-size 70px
+	padding 20px 0 20px
+	font-family Chosen, 'Helvetica Neue', Helvetica, Arial, sans-serif
+	.lock
+		line-height 1em
+
+	.logo
+		float left
+		font-size 100%
+		margin 5px 21px
+		.part
+			display block
+			img
+				height 27px
+				display block
+		.left
+		.right
+			animation-delay 1.3s
+	
+	h1
+		margin 0px
+		padding 0px
+		float left
+		font-size 100%
+		font-weight normal
+
+	.knock
+		animation-delay 0.1s
+	.magic
+		animation-delay 0.4s
+	.back
+		animation-delay 1.0s
+	
+	h2
+		clear both
+		font-size 20px
+		margin 1ex 0
+		font-weight normal
+		color #555
+		margin-left 90px
+
+nav
+	position fixed
+	bottom 10px
+	right 10px
+	.separator
+		margin 0px
+		padding 0px
+		margin-left 1ex
+		float left
+		.label
+			margin 0 1ex
+
+.selection
+	border 1px solid #ccc
+	border-radius 4px
+	display inline-block
+	vertical-align middle
+	border-width 1px
+	border-style solid
+	border-color #333 #666 #fff
+	background linear-gradient(top, #777, #999)
+	.option
+		display inline-block
+		vertical-align middle
+		input[type="radio"]
+			display none
+			& + label
+				display inline-block
+				background none transparent
+				margin -1px -1px 0
+				padding 0.5ex 1ex
+				vertical-align middle
+				border-radius 3px
+				cursor pointer
+
+			&:checked + label
+				background linear-gradient(top,#666,#333)
+				color white
+				text-shadow 0px 1px 0px rgba(white,0), 0px -1px 0px black
+				box-shadow inset 0px 0px 0px 1px rgba(black,0.4)
+				cursor default
+
