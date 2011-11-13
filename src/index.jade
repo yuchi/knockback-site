@@ -4,9 +4,19 @@ html
     meta(http-equiv="Content-Type",content="text/html;charset=utf-8")
     title Knockback
     link(rel="stylesheet",href="look.css")
+    link(rel="stylesheet",href="lib/highlight/highlightjs/styles/dark.css")
+    script(type="application/javascript",src="lib/highlight/highlightjs/highlight.js")
+    script(type="application/javascript",src="lib/highlight/highlightjs/languages/javascript.js")
+    script(type="application/javascript",src="lib/highlight/highlight-coffee.js")
+    script(type="application/javascript",src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js")
+    script(type="application/javascript",src="interface.js")
+    script(type="application/javascript").
+      hljs.tabReplace = '  ';
+      hljs.initHighlightingOnLoad();
   body
     #wrap
-      header
+
+      header#header
         .lock
           .logo
             .part.left.animated.fadeInRight: img(src="lib/left.svg")
@@ -19,31 +29,77 @@ html
           span.knock.animated.fadeIn= "brings Knockout.js "
           span.magic.animated.fadeIn= "magic "
           span.back.animated.fadeIn to Backbone
-      nav
+
+      nav#navigation
         .separator
           span.label Code
           .selection.codestyle
             .option
-              input#cs-cs(type="radio",name="codestyle",checked)
+              input.auto#cs-cs(type="radio",name="codestyle",value="cs")
               label(for="cs-cs") CoffeeScript
             .option
-              input#cs-js(type="radio",name="codestyle")
+              input#cs-js(type="radio",name="codestyle",value="js")
               label(for="cs-js") Javascript
-        .separator
-          span.label Langauge
-          .selection.codestyle
-            .option
-              input#lang-en(type="radio",name="lang",checked)
-              label(for="lang-en") EN
-            .option
-              input#lang-fr(type="radio",name="lang")
-              label(for="lang-fr") FR
-            .option
-              input#lang-it(type="radio",name="lang")
-              label(for="lang-it") IT
+        //
+          .separator
+            span.label Langauge
+            .selection.codestyle
+              .option
+                input#lang-en(type="radio",name="lang",checked)
+                label(for="lang-en") EN
+              .option
+                input#lang-fr(type="radio",name="lang")
+                label(for="lang-fr") FR
+              .option
+                input#lang-it(type="radio",name="lang")
+                label(for="lang-it") IT
 
         //
           ul.separator
             li: a(href="#") Repository
             li: a(href="#") Tutorial
             li: a(href="#") Documentation
+
+      section#content.animated.fadeIn
+
+        .cols
+          .col: div.content
+            h2 Dependencies
+            p.
+              Knockback requires Backbone (and therefore Underscore.js) and Knockout.js
+              to be already loaded on the page.
+          .col: div.content
+            h2 Features
+            ul
+              li Localization
+              li Knockout.js' bindings and automagical update
+              li Backbone's sleek Model definition
+          .col: div.content
+            h2 Latest <small>0.6</small>
+            ul
+              li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.js">Development</a> <small>23 KB</small>
+              li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.min.js">Production</a> <small>14.8 KB</small>
+
+        .content
+          h2 An example
+
+          pre.hl(data-for="cs"): code.coffee.
+            ContactViewModel = (model) ->
+              kb.observables(model, {
+                name:  {key:'name'}
+                email: {key:'email', write: true, default: 'your.name@yourplace.com'}
+                date:  {key:'date', write: true, localizer: (value) => return new LongDateLocalizer(value)}
+              }, this)
+              return @
+            # Cool, isn't it?
+          pre.hl(data-for="js"): code.javascript.
+            var ContactViewModel = function (model) {
+              kb.observables(model, {
+                name:  {key:'name'},
+                email: {key:'email', write: true, default: 'your.name@yourplace.com'},
+                date:  {key:'date', write: true, localizer: function (value) { return new LongDateLocalizer(value) } },
+              }, this);
+              return this;
+            };
+            // Cool, isn't it?
+          p Contenuto

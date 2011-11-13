@@ -1,25 +1,67 @@
 
-@import url(http://fonts.googleapis.com/css?family=Numans);
+@import url('http://fonts.googleapis.com/css?family=Numans');
+@import url('http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic');
 @import 'lib/animate-custom.css';
 @import 'nib';
 
+
 Chosen = "Numans"
+Monospaced = "Ubuntu Mono"
+
+links = #2BA8D9
+
+// Base
+// ====
 
 body
 	background #eee
 	margin 0px
 	padding 0px
 	font-family Helvetica, Arial, sans-serif
+	min-width 520px
 
 .animated
 	animation-fill-mode both
+
+a:link
+a:visited
+	color links
+	text-decoration none
+	transition color 200ms
+
+a:link
+	color links
+
+a:visited
+	color desaturate(links, 20)
+
+a:hover
+	color lighten(links, 10)
+a:active
+	color darken(links, 10)
+
+a:visited:hover
+	color lighten(desaturate(links, 30), 10)
+a:visited:active
+	color darken(desaturate(links, 30), 10)
+
+a:focus
+	text-decoration underline
+
+// Styles
+// ======
 
 #wrap
 	position relative
 	max-width 960px
 	margin 0 auto
 
+// Header
+// ------
+
 header
+	position relative
+	z-index 100
 	font-size 70px
 	padding 20px 0 20px
 	font-family Chosen, 'Helvetica Neue', Helvetica, Arial, sans-serif
@@ -61,10 +103,17 @@ header
 		color #555
 		margin-left 90px
 
-nav
+// Navigation (and sliders)
+// ------------------------
+
+nav#navigation
 	position fixed
-	bottom 10px
-	right 10px
+	z-index 200
+	bottom 0px
+	right 0px
+	padding 10px
+	background #eee
+	border-radius top left 2px
 	.separator
 		margin 0px
 		padding 0px
@@ -102,4 +151,63 @@ nav
 				text-shadow 0px 1px 0px rgba(white,0), 0px -1px 0px black
 				box-shadow inset 0px 0px 0px 1px rgba(black,0.4)
 				cursor default
+
+// Content
+// -------
+
+section#content
+	position relative
+	z-index 100
+	animation-delay 2s
+	line-height 20px
+
+	.content
+		padding 0 10px
+
+	.cols
+		overflow hidden
+		.col
+			width 33.33%
+			float left
+	
+	p, pre
+		margin @line-height 0px
+
+	pre.hl
+		position relative
+		code
+			font-family Monospaced, monospaced
+			position relative
+			padding @line-height 2em
+			overflow auto
+			z-index 100
+
+		// TODO match with style
+		_bg = #444
+
+		&:before
+		&:after
+			z-index 200
+			content ''
+			position absolute
+			top 0px
+			height 100%
+			width 2em
+
+		&:before
+			left 0px
+			background linear-gradient(right, rgba(_bg,0), rgba(_bg,1))
+		&:after
+			right 0px
+			background linear-gradient(left, rgba(_bg,0), rgba(_bg,1))
+
+	ul
+		display block
+		margin @line-height 0
+		padding 0px
+		li
+			list-style square
+			padding 0px
+			margin 0px
+			margin-left 2em
 

@@ -1,15 +1,46 @@
 @import url("http://fonts.googleapis.com/css?family=Numans");
+@import url("http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic");
 @import 'lib/animate-custom.css';
 body {
   background: #eee;
   margin: 0px;
   padding: 0px;
   font-family: Helvetica, Arial, sans-serif;
+  min-width: 520px;
 }
 .animated {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+a:link,
+a:visited {
+  color: #2ba8d9;
+  text-decoration: none;
+  -webkit-transition: color 200ms;
+  -moz-transition: color 200ms;
+  transition: color 200ms;
+}
+a:link {
+  color: #2ba8d9;
+}
+a:visited {
+  color: #449dc0;
+}
+a:hover {
+  color: #56bae1;
+}
+a:active {
+  color: #2088b1;
+}
+a:visited:hover {
+  color: #74adc3;
+}
+a:visited:active {
+  color: #407b91;
+}
+a:focus {
+  text-decoration: underline;
 }
 #wrap {
   position: relative;
@@ -17,6 +48,8 @@ body {
   margin: 0 auto;
 }
 header {
+  position: relative;
+  z-index: 100;
   font-size: 70px;
   padding: 20px 0 20px;
   font-family: "Numans", 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -72,18 +105,26 @@ header h2 {
   color: #555;
   margin-left: 90px;
 }
-nav {
+nav#navigation {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  z-index: 200;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px;
+  background: #eee;
+  -webkit-border-radius-topleft: 2px;
+  -moz-border-radius-topleft: 2px;
+  border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
 }
-nav .separator {
+nav#navigation .separator {
   margin: 0px;
   padding: 0px;
   margin-left: 1ex;
   float: left;
 }
-nav .separator .label {
+nav#navigation .separator .label {
   margin: 0 1ex;
 }
 .selection {
@@ -130,4 +171,70 @@ nav .separator .label {
   -moz-box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.40);
   box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.40);
   cursor: default;
+}
+section#content {
+  position: relative;
+  z-index: 100;
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  animation-delay: 2s;
+  line-height: 20px;
+}
+section#content .content {
+  padding: 0 10px;
+}
+section#content .cols {
+  overflow: hidden;
+}
+section#content .cols .col {
+  width: 33.33%;
+  float: left;
+}
+section#content p,
+section#content pre {
+  margin: 20px 0px;
+}
+section#content pre.hl {
+  position: relative;
+}
+section#content pre.hl code {
+  font-family: "Ubuntu Mono", monospaced;
+  position: relative;
+  padding: 20px 2em;
+  overflow: auto;
+  z-index: 100;
+}
+section#content pre.hl:before,
+section#content pre.hl:after {
+  z-index: 200;
+  content: '';
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 2em;
+}
+section#content pre.hl:before {
+  left: 0px;
+  background: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(68,68,68,0.00)), color-stop(1, #444));
+  background: -webkit-linear-gradient(right, rgba(68,68,68,0.00) 0%, #444 100%);
+  background: -moz-linear-gradient(right, rgba(68,68,68,0.00) 0%, #444 100%);
+  background: linear-gradient(right, rgba(68,68,68,0.00) 0%, #444 100%);
+}
+section#content pre.hl:after {
+  right: 0px;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(68,68,68,0.00)), color-stop(1, #444));
+  background: -webkit-linear-gradient(left, rgba(68,68,68,0.00) 0%, #444 100%);
+  background: -moz-linear-gradient(left, rgba(68,68,68,0.00) 0%, #444 100%);
+  background: linear-gradient(left, rgba(68,68,68,0.00) 0%, #444 100%);
+}
+section#content ul {
+  display: block;
+  margin: 20px 0;
+  padding: 0px;
+}
+section#content ul li {
+  list-style: square;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 2em;
 }
