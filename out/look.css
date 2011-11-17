@@ -42,6 +42,12 @@ a:visited:active {
 a:focus {
   text-decoration: underline;
 }
+tt,
+code,
+kbd,
+samp {
+  font-family: "Ubuntu Mono", monospaced;
+}
 #wrap {
   position: relative;
   max-width: 960px;
@@ -179,6 +185,7 @@ section#content {
   -moz-animation-delay: 2s;
   animation-delay: 2s;
   line-height: 20px;
+  -webkit-font-smoothing: antialiased;
 }
 section#content .content {
   padding: 0 10px;
@@ -198,7 +205,6 @@ section#content pre.hl {
   position: relative;
 }
 section#content pre.hl code {
-  font-family: "Ubuntu Mono", monospaced;
   position: relative;
   padding: 20px 2em;
   overflow: auto;
@@ -233,8 +239,95 @@ section#content ul {
   padding: 0px;
 }
 section#content ul li {
-  list-style: square;
+  list-style: square outside;
   padding: 0px;
   margin: 0px;
-  margin-left: 2em;
+  margin-left: 1em;
+}
+section#content .kb {
+  font-family: "Numans", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+section#content .comparison {
+  width: 100%;
+  margin: 10px auto 20px;
+/*
+		.col .content
+			border 2px solid gray
+
+		.first
+			text-align left
+			.content
+				border-right 0px none
+		.mid
+			text-align center
+			.content
+				padding 20px 10px
+				margin -20px 0px
+		.last
+			text-align right
+			.content
+				border-left 0px none
+		*/
+}
+section#content .comparison col.mid {
+  width: 25%;
+}
+section#content .comparison tr td,
+section#content .comparison tr th {
+  padding: 0.5em 2ex;
+  line-height: 1em;
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+section#content .comparison tr td:first-child,
+section#content .comparison tr th:first-child {
+  text-align: right;
+}
+section#content .comparison tr td:last-child,
+section#content .comparison tr th:last-child {
+  text-align: left;
+}
+section#content .comparison tr td.mid,
+section#content .comparison tr th.mid {
+  text-align: center;
+}
+section#content .comparison th {
+  background: #ddd;
+}
+section#content .comparison th.kb {
+  font-size: 1.4em;
+}
+section#content .comparison td.kb {
+  font-size: 1.3em;
+}
+section#content .comparison td.yes {
+  background: #bfbf40;
+  color: #fff;
+}
+section#content .comparison td.no {
+  background: #bf4040;
+  color: #fff;
+}
+section#content .comparison td.own {
+  text-align: center;
+  background: #bfbf40;
+  color: #26260d;
+}
+section#content .comparison td.done {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #bfbf40;
+  color: #4d4d19;
+  text-shadow: 0px -1px 0px #26260d;
+  font-size: 2em;
+  padding: 0px;
+  text-align: center;
+}
+section#content .comparison:hover tr td {
+  opacity: 0.7;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+}
+section#content .comparison:hover tr:hover td {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
 }

@@ -81,6 +81,64 @@ html
               li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.min.js">Production</a> <small>14.8 KB</small>
 
         .content
+          h2 Some background
+          p Both Knockout and Backbone have their strengths and weaknesses, but together they are amazing!
+          p At the same time you can have the strong ORM provided by Backbone and the dynamic view-models that Knockout.js offers.
+
+        //
+          .cols.comparison
+            .col.first: div.content
+              h3 Knockout.js 
+            .col.mid: div.content
+              h3.kb Knockback 
+            .col.last: div.content
+              h3 Backbone 
+
+        .content
+          table.comparison
+            col
+            col.mid
+            col
+            thead: tr
+              th Backbone
+              th.kb Knockback
+              th Knockout.js
+            tbody
+              tr
+                td.yes Bullet-proof ORM
+                td.done &#9754;
+                td.no Weak ORM
+              tr
+                td.yes (De)Serialization
+                td.done &#9754;
+                td.no Manual serialization
+              tr
+                td.no: abbr(title="Model/View/Controller") MVC
+                td.done &#9755;
+                td.yes: abbr(title="Model/View/ViewModel") MVVM
+              tr
+                td.no Manual views update
+                td.done &#9755;
+                td.yes <code>data-bind</code> based sorcery
+              tr
+                td.yes Routing and history support
+                td.done &#9754;
+                td.no No routing 
+              tr
+                td.no Blurred Views/Controllers
+                td.own Full lifecycle
+                td.no No controllers           
+              tr
+                td.no Messy collection/view update
+                td.own Fully sorted and updated collection views
+                td
+              tr
+                td
+                td.own Localization
+                td
+            
+
+        .content
           h2 An example
 
           pre.hl(data-for="cs"): code.coffee.

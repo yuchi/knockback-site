@@ -48,6 +48,9 @@ a:visited:active
 a:focus
 	text-decoration underline
 
+tt, code, kbd, samp
+	font-family Monospaced, monospaced
+
 // Styles
 // ======
 
@@ -160,6 +163,7 @@ section#content
 	z-index 100
 	animation-delay 2s
 	line-height 20px
+	-webkit-font-smoothing antialiased
 
 	.content
 		padding 0 10px
@@ -176,7 +180,6 @@ section#content
 	pre.hl
 		position relative
 		code
-			font-family Monospaced, monospaced
 			position relative
 			padding @line-height 2em
 			overflow auto
@@ -206,8 +209,91 @@ section#content
 		margin @line-height 0
 		padding 0px
 		li
-			list-style square
+			list-style square outside
 			padding 0px
 			margin 0px
-			margin-left 2em
+			margin-left 1em
+
+	.kb
+		font-family Chosen, 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+	// Comparison table
+	// ----------------
+
+	.comparison
+		width 100%
+		margin 10px auto 20px
+		//border-collapse collapse
+
+		col.mid
+			width 25%
+
+		tr
+			td
+			th
+				padding 0.5em 2ex
+				line-height 1em
+				transition opacity 200ms
+
+				&:first-child
+					text-align right
+				&:last-child
+					text-align left
+				&.mid
+					text-align center
+		
+		th
+			background #ddd
+
+		th.kb
+			font-size 1.4em
+
+		td.kb
+			font-size 1.3em
+		
+		td.yes
+			background hsl(60,50%,50%)
+			color white
+		td.no
+			background hsl(0,50%,50%)
+			color white
+
+		td.own
+			text-align center
+			background hsl(60,50%,50%)
+			color hsl(60,50%,10%)
+
+		td.done
+			font-family Helvetica, Arial, sans-serif
+			background hsl(60,50%,50%)
+			color hsl(60,50%,20%)
+			text-shadow 0px -1px 0px hsl(60,50%,10%)
+			font-size 2em
+			padding 0px
+			text-align center
+
+		&:hover
+			tr td
+				opacity 0.7
+			tr:hover td
+				opacity 1
+
+		/*
+		.col .content
+			border 2px solid gray
+
+		.first
+			text-align left
+			.content
+				border-right 0px none
+		.mid
+			text-align center
+			.content
+				padding 20px 10px
+				margin -20px 0px
+		.last
+			text-align right
+			.content
+				border-left 0px none
+		*/
 
