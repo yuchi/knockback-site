@@ -1,3 +1,5 @@
+- var numb = function(n) { return '&#' + (10101+n) + ';' };
+- var ref = function(d,m,n) { return '<a title="'+d+'" href="#'+m+n+'">'+n+'</a>' };
 !!! 5
 html
   head
@@ -30,17 +32,17 @@ html
           span.magic.animated.fadeIn= "magic "
           span.back.animated.fadeIn to Backbone
 
-      nav#navigation
-        .separator
-          span.label Code
-          .selection.codestyle
-            .option
-              input.auto#cs-cs(type="radio",name="codestyle",value="cs")
-              label(for="cs-cs") CoffeeScript
-            .option
-              input#cs-js(type="radio",name="codestyle",value="js")
-              label(for="cs-js") Javascript
-        //
+      //
+        nav#navigation
+          .separator
+            span.label Code
+            .selection.codestyle
+              .option
+                input.auto#cs-cs(type="radio",name="codestyle",value="cs")
+                label(for="cs-cs") CoffeeScript
+              .option
+                input#cs-js(type="radio",name="codestyle",value="js")
+                label(for="cs-js") Javascript
           .separator
             span.label Langauge
             .selection.codestyle
@@ -53,12 +55,6 @@ html
               .option
                 input#lang-it(type="radio",name="lang")
                 label(for="lang-it") IT
-
-        //
-          ul.separator
-            li: a(href="#") Repository
-            li: a(href="#") Tutorial
-            li: a(href="#") Documentation
 
       section#content.animated.fadeIn
 
@@ -80,84 +76,170 @@ html
               li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.js">Development</a> <small>23 KB</small>
               li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.min.js">Production</a> <small>14.8 KB</small>
 
-        .content
-          h2 Some background
-          p Both Knockout and Backbone have their strengths and weaknesses, but together they are amazing!
-          p At the same time you can have the strong ORM provided by Backbone and the dynamic view-models that Knockout.js offers.
-
         //
-          .cols.comparison
-            .col.first: div.content
-              h3 Knockout.js 
-            .col.mid: div.content
-              h3.kb Knockback 
-            .col.last: div.content
-              h3 Backbone 
+          .content
+            h2 Some background
+            p Both Knockout and Backbone have their strengths and weaknesses, but together they are amazing!
+            p At the same time you can have the strong ORM provided by Backbone and the dynamic view-models that Knockout.js offers.
 
         .content
           table.comparison
             col
             col.mid
             col
+            col.ref
             thead: tr
               th Backbone
               th.kb Knockback
               th Knockout.js
+              th(title="Notes") !
+            - var count = 0;
+            - var refer = 'comparison-';
+            - var descr = 'View description';
             tbody
               tr
                 td.yes Bullet-proof ORM
                 td.done &#9754;
                 td.no Weak ORM
+                td.hidden
               tr
                 td.yes (De)Serialization
                 td.done &#9754;
                 td.no Manual serialization
+                td.ref!= ref(descr, refer, 1)
               tr
                 td.no: abbr(title="Model/View/Controller") MVC
                 td.done &#9755;
                 td.yes: abbr(title="Model/View/ViewModel") MVVM
+                td.hidden
+              tr
+                td.no DOM Maninulation utils
+                td.done &#9755;
+                td.yes simplifies jQuery use to the minimal effort needed
+                td.hidden
               tr
                 td.no Manual views update
                 td.done &#9755;
                 td.yes <code>data-bind</code> based sorcery
+                td.hidden
               tr
                 td.yes Routing and history support
                 td.done &#9754;
-                td.no No routing 
+                td.no No routing
+                td.ref!= ref(descr, refer, 2)
               tr
                 td.no Blurred Views/Controllers
-                td.own Full lifecycle
-                td.no No controllers           
+                td.own Proper Model/View/Controller (ViewModel) separation
+                td.no Blurred Models/Controllers (ViewModels)
+                td.ref!= ref(descr, refer, 3)
+              tr
+                td.hidden
+                td.own.dependent Cross-view Model state synchronizing
+                td.hidden
+                td.hidden
               tr
                 td.no Messy collection/view update
                 td.own Fully sorted and updated collection views
-                td
+                td.hidden
+                td.hidden
               tr
-                td
-                td.own Localization
-                td
-            
+                td.hidden
+                td.own View control settings
+                td.hidden
+                td.ref!= ref(descr, refer, 4)
+              tr
+                td.hidden
+                td.own.dependent Localization
+                td.hidden
+                td.hidden
+        .content.notes
+          h2 Notes
+          section
+            #comparison-1
+              :markdown
+                Serialization
+                =============
 
-        .content
-          h2 An example
+                As you probably know, Backbone is known to have a fantastic syncing system built
+                to go as close as possible to the RESTful pattern. And if this is not good for
+                your application you can always opt to a custom `Backbone.sync`. And granularity
+                is also possible setting a Model/Collection's own `sync`.
 
-          pre.hl(data-for="cs"): code.coffee.
-            ContactViewModel = (model) ->
-              kb.observables(model, {
-                name:  {key:'name'}
-                email: {key:'email', write: true, default: 'your.name@yourplace.com'}
-                date:  {key:'date', write: true, localizer: (value) => return new LongDateLocalizer(value)}
-              }, this)
-              return @
-            # Cool, isn't it?
-          pre.hl(data-for="js"): code.javascript.
-            var ContactViewModel = function (model) {
-              kb.observables(model, {
-                name:  {key:'name'},
-                email: {key:'email', write: true, default: 'your.name@yourplace.com'},
-                date:  {key:'date', write: true, localizer: function (value) { return new LongDateLocalizer(value) } },
-              }, this);
-              return this;
-            };
-            // Cool, isn't it?
-          p Contenuto
+                Knockout.js instead does not provide with such a feature, and what it offers
+                is a simple plugin to map into/from any source.
+
+                Knockback uses Backbone's models and collections, and this implies that all the
+                serialization features we all love are still there.
+
+            #comparison-2
+              :markdown
+                Routing
+                =======
+                
+                In Knockback, while using Knockout.js ViewModel pattern, we developed a full
+                pattern that uses Backbone's routing support.
+
+          section#comparison-3
+            :markdown
+              (In)proper use of tools
+              =======================
+              
+              Too often, in a large Backbone application you find yourself building up views
+              with too much logic in it, almost always managing sub-states. This is actually
+              an improper use of views, which should be as logic-less as possible.
+
+              But you *have* to do things like that, and Backbone doesn't help the developer
+              solving this (ethical?) issue.
+
+              In Knockout.js, this is not a problem, because ViewModels differs from Views
+              exactly in this: they own states, methods and properties as a model does, and only
+              the *view* part of the concept is logic-less.
+
+              So Knockout solves the blurres View/Controller issue you'll find building large
+              applications with Backbone. **But** Knockout simply provides ViewModels and no
+              Models. So how can you build a proper MVVM? *Backbone to the rescue!*
+
+              And the circle is complete: Models from Backbone, and View/ViewModels from
+              Knockout.js.
+
+          section#comparison-4
+            :markdown
+              Views' settings
+              ===============
+
+              Following MVVM principles where a ViewModel is the View's Model, and therefore
+              owns its own properties and methods which are *then* reflected in the View
+              itself, Knockback ViewModels have setting and control properties, which are not
+              owned by the model.
+
+              What does this allow? Actual settings (*eg* colors for different priorities in a
+              task list ) to be applied on all the associated ViewModels, or something more
+              interesting, like localization.
+
+              If you consider localized labels as observed properties, then you can understand
+              how Knockback provides internationalization to your applications.
+
+        //
+          .content
+            h2 An example
+
+            pre.hl(data-for="cs"): code.coffee.
+              ContactViewModel = (model) ->
+                kb.observables(model, {
+                  name:  {key:'name'}
+                  email: {key:'email', write: true, default: 'your.name@yourplace.com'}
+                  date:  {key:'date', write: true, localizer: (value) => return new LongDateLocalizer(value)}
+                }, this)
+                return @
+              # Cool, isn't it?
+            pre.hl(data-for="js"): code.javascript.
+              var ContactViewModel = function (model) {
+                kb.observables(model, {
+                  name:  {key:'name'},
+                  email: {key:'email', write: true, default: 'your.name@yourplace.com'},
+                  date:  {key:'date', write: true, localizer: function (value) { return new LongDateLocalizer(value) } },
+                }, this);
+                return this;
+              };
+              // Cool, isn't it?
+            p Contenuto

@@ -184,7 +184,7 @@ section#content {
   -webkit-animation-delay: 2s;
   -moz-animation-delay: 2s;
   animation-delay: 2s;
-  line-height: 20px;
+  line-height: 1.2em;
   -webkit-font-smoothing: antialiased;
 }
 section#content .content {
@@ -199,14 +199,14 @@ section#content .cols .col {
 }
 section#content p,
 section#content pre {
-  margin: 20px 0px;
+  margin: 1.2em 0px;
 }
 section#content pre.hl {
   position: relative;
 }
 section#content pre.hl code {
   position: relative;
-  padding: 20px 2em;
+  padding: 1.2em 2em;
   overflow: auto;
   z-index: 100;
 }
@@ -235,7 +235,7 @@ section#content pre.hl:after {
 }
 section#content ul {
   display: block;
-  margin: 20px 0;
+  margin: 1.2em 0;
   padding: 0px;
 }
 section#content ul li {
@@ -269,28 +269,31 @@ section#content .comparison {
 				border-left 0px none
 		*/
 }
+section#content .comparison col {
+  width: 30%;
+}
 section#content .comparison col.mid {
-  width: 25%;
+  width: 35%;
+}
+section#content .comparison col.ref {
+  width: 5%;
 }
 section#content .comparison tr td,
 section#content .comparison tr th {
+  position: relative;
   padding: 0.5em 2ex;
   line-height: 1em;
-  -webkit-transition: opacity 200ms;
-  -moz-transition: opacity 200ms;
-  transition: opacity 200ms;
 }
 section#content .comparison tr td:first-child,
 section#content .comparison tr th:first-child {
   text-align: right;
 }
-section#content .comparison tr td:last-child,
-section#content .comparison tr th:last-child {
-  text-align: left;
-}
 section#content .comparison tr td.mid,
 section#content .comparison tr th.mid {
   text-align: center;
+}
+section#content .comparison tbody td {
+  border: 1px solid rgba(0,0,0,0.20);
 }
 section#content .comparison th {
   background: #ddd;
@@ -300,6 +303,10 @@ section#content .comparison th.kb {
 }
 section#content .comparison td.kb {
   font-size: 1.3em;
+}
+section#content .comparison td.hidden {
+  border: 0px none;
+  background: none transparent;
 }
 section#content .comparison td.yes {
   background: #bfbf40;
@@ -323,6 +330,13 @@ section#content .comparison td.done {
   padding: 0px;
   text-align: center;
 }
+section#content .comparison td.ref {
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+  border: 0px none;
+  line-height: 0.5em;
+}
 section#content .comparison:hover tr td {
   opacity: 0.7;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
@@ -330,4 +344,27 @@ section#content .comparison:hover tr td {
 section#content .comparison:hover tr:hover td {
   opacity: 1;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+section#content .comparison td.dependent:before {
+  content: '▼';
+  display: block;
+  position: absolute;
+  top: -0.5em;
+  left: 50%;
+  font-size: 20px;
+  line-height: 1em;
+  width: 3em;
+  margin: -2px -1.5em;
+  color: #4d4d19;
+}
+section#content .notes {
+  font-size: 0px;
+}
+section#content .notes section {
+  width: 30%;
+  display: inline-block;
+  font-size: 13px;
+  margin-right: 3%;
+  vertical-align: top;
+  *float: left;
 }
