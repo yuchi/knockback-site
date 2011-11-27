@@ -58,7 +58,7 @@ html
 
       section#content.animated.fadeIn
 
-        .cols
+        .cols.wrapped
           .col: div.content
             h2 Dependencies
             p.
@@ -78,6 +78,13 @@ html
             ul
               li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.js">Development</a> <small>23 KB</small>
               li <a href="https://raw.github.com/kmalakoff/knockback/master/knockback.min.js">Production</a> <small>14.8 KB</small>
+            h2 Source
+            :markdown
+              You can find the source on [Github][0]. To provide feedback leave a message
+              or [create an issue][1].
+
+              [0]: https://github.com/kmalakoff/knockback
+              [1]: https://github.com/kmalakoff/knockback/issue
 
         //
           .content
@@ -93,7 +100,7 @@ html
             col.ref
             thead: tr
               th Backbone
-              th.kb Knockback
+              th.kb.mid Knockback
               th Knockout.js
               th(title="Notes") !
             - var count = 0;
@@ -182,45 +189,47 @@ html
                 In Knockback, while using Knockout.js ViewModel pattern, we developed a full
                 pattern that supports Backbone's routing solution.
 
-          section#comparison-3
-            :markdown
-              (Im)proper use of tools
-              =======================
+          section
+            #comparison-3
+              :markdown
+                (Im)proper use of tools
+                =======================
 
-              Too often, in a large Backbone application you find yourself building up views
-              with too much logic in them, almost always requiring sub-state management. This is
-              actually an improper use of views, which should be as logic-less as possible.
+                Too often, in a large Backbone application you find yourself building up views
+                with too much logic in them, almost always requiring sub-state management. This is
+                actually an improper use of views, which should be as logic-less as possible.
 
-              But you *have* to do things like that, and Backbone doesn't help the developer
-              solving this (ethical?) issue.
+                But you *have* to do things like that, and Backbone doesn't help the developer
+                solving this (ethical?) issue.
 
-              In Knockout.js, this is not a problem, because ViewModels differ from Views
-              exactly in this: they own states, methods and properties allowing the *views* to
-              be logic-less.
+                In Knockout.js, this is not a problem, because ViewModels differ from Views
+                exactly in this: they own states, methods and properties allowing the *views* to
+                be logic-less.
 
-              So Knockout solves the blurry View/Controller issue you'll find building large
-              applications with Backbone. **But** because Knockout simply provides ViewModels and no
-              Models, how can you build a proper MVC/MVVM? *Backbone to the rescue!*
+                So Knockout solves the blurry View/Controller issue you'll find building large
+                applications with Backbone. **But** because Knockout simply provides ViewModels and no
+                Models, how can you build a proper MVC/MVVM? *Backbone to the rescue!*
 
-              And the circle is complete: Models from Backbone, and Views/ViewModels from
-              Knockout.js.
+                And the circle is complete: Models from Backbone, and Views/ViewModels from
+                Knockout.js.
 
-          section#comparison-4
-            :markdown
-              Views' settings
-              ===============
+          section
+            #comparison-4
+              :markdown
+                Views' settings
+                ===============
 
-              Following MVVM principles where a ViewModel is the "View's Model", and therefore
-              owns its own properties and methods which are *then* reflected in the View
-              itself, Knockback ViewModels can add View setting and control properties, which are not
-              (and should not be!) owned by the model.
+                Following MVVM principles where a ViewModel is the "View's Model", and therefore
+                owns its own properties and methods which are *then* reflected in the View
+                itself, Knockback ViewModels can add View setting and control properties, which are not
+                (and should not be!) owned by the model.
 
-              What does this allow? Actual settings (*eg* colors for different priorities in a
-              task list) to be applied on all the associated ViewModels, or...something more
-              interesting, like an design pattern for localization.
+                What does this allow? Actual settings (*eg* colors for different priorities in a
+                task list) to be applied on all the associated ViewModels, or...something more
+                interesting, like an design pattern for localization.
 
-              If you consider localized labels as observed properties, then you can understand
-              how Knockback provides internationalization to your applications.
+                If you consider localized labels as observed properties, then you can understand
+                how Knockback provides internationalization to your applications.
 
         //
           .content
@@ -246,3 +255,12 @@ html
               };
               // Cool, isn't it?
             p Contenuto
+
+      footer
+        :markdown
+          *Knockback* is brought you by [Kevin Malakoff](https://github.com/kmalakoff)
+
+          Designed by [Pier Paolo Ramon](https://github.com/yuchi)
+
+    a(href="https://github.com/kmalakoff/knockback")
+      img(style="position: absolute; top: 0; right: 0; border: 0;",src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67",alt="Fork me on GitHub")
