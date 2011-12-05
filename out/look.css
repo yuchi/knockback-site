@@ -118,9 +118,7 @@ nav#navigation {
   right: 0px;
   padding: 10px;
   background: #eee;
-  -webkit-border-radius-topleft: 2px;
   -moz-border-radius-topleft: 2px;
-  border-radius-topleft: 2px;
   -webkit-border-top-left-radius: 2px;
   border-top-left-radius: 2px;
 }
